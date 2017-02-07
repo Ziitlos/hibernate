@@ -5,8 +5,6 @@ import ch.helsana.web.hib.init.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-
-
 /**
  * Created by hkfq4 on 07.02.2017.
  */

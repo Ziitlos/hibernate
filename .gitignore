@@ -4,9 +4,10 @@
 .settings/
 *.class
 
-# Maven
+# Maven und intellij
 log/
 target/
 .idea/
 *.iml
 /build/
+
