@@ -10,7 +10,7 @@ public class Start {
     //psvm shortcut für main Class
     public static void main(String[] args) {
 
-        System.out.println("Hellooooo");
+        System.out.println("Hello");
 
         long millis = new java.util.Date().getTime();
         System.out.println("Millis: " + millis);
