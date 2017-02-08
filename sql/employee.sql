@@ -6,13 +6,13 @@ CREATE TABLE EMPLOYEE (
   PRIMARY KEY (id)
 );
 
-CREATE SEQUENCE employee_seq START WITH 1;
+CREATE SEQUENCE employee_sequence START WITH 1;
 
 CREATE OR REPLACE TRIGGER employee_bir
 BEFORE INSERT ON EMPLOYEE
 FOR EACH ROW
   BEGIN
-    SELECT employee_seq.nextval
+    SELECT employee_sequence.nextval
     INTO :new.id
     FROM dual;
   END;
