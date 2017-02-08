@@ -1,11 +1,11 @@
 package ch.helsana.web;
 
 import ch.helsana.web.hib.entities.Employee;
+import ch.helsana.web.hib.init.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,16 +15,9 @@ import java.util.List;
  */
 public class ManageEmployee {
 
-    private static SessionFactory factory;
+    private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     public static void main(String[] args) {
-
-        try {
-            factory = new AnnotationConfiguration().configure().addAnnotatedClass(Employee.class).buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Failed to create sessionFactory object." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
 
         ManageEmployee ME = new ManageEmployee();
 
@@ -39,11 +32,11 @@ public class ManageEmployee {
         ME.listEmployees();
 
         /* Update employee's records */
-        ME.updateEmployee(48, 5555);
+        ME.updateEmployee(66, 5555);
 
         /* Delete an employee from the database */
         System.out.println("---> Employee delete");
-        ME.deleteEmployee(49);
+        ME.deleteEmployee(67);
 
         /* List down all the employees */
         System.out.println("---> Employees auflisten");
@@ -54,7 +47,7 @@ public class ManageEmployee {
 
     /* Method to CREATE an employee in the database */
     public Integer addEmployee(String fname, String lname, int salary) {
-        Session session = factory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction tx = null;
         Integer employeeID = null;
 
@@ -81,7 +74,7 @@ public class ManageEmployee {
 
     /* Method to  READ all the employees */
     public void listEmployees() {
-        Session session = factory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction tx = null;
 
         try {
@@ -105,7 +98,7 @@ public class ManageEmployee {
 
     /* Method to UPDATE salary for an employee */
     public void updateEmployee(Integer EmployeeID, int salary) {
-        Session session = factory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction tx = null;
 
         try {
@@ -124,7 +117,7 @@ public class ManageEmployee {
 
     /* Method to DELETE an employee from the records */
     public void deleteEmployee(Integer EmployeeID) {
-        Session session = factory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
