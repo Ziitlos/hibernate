@@ -1,5 +1,6 @@
 package ch.helsana.web.hib.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,14 +9,18 @@ import javax.persistence.Table;
  * Created by hkfq4 on 07.02.2017.
  */
 @Entity
-@Table
+@Table(name = "books")
 public class Books {
 
     @Id
     //@GeneratedValue
+    @Column(name = "id")
     private int id;
+    @Column(name = "isbn")
     private String isbn;
+    @Column(name = "title")
     private String title;
+    @Column(name = "year")
     private Integer year;
 
     public Books() {};
