@@ -12,9 +12,8 @@
         <property name="show_sql">true</property>
         <property name="connection.pool_size">1</property>
 
-        <!-- <mapping class="ch.helsana.web.hib.entities.Books"></mapping> -->
+        <mapping class="ch.helsana.web.hib.entities.Books"></mapping>
 
-        <mapping resource="hibernate.hbm.xml"></mapping>
 
     </session-factory>
 </hibernate-configuration>
