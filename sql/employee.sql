@@ -8,13 +8,4 @@ CREATE TABLE EMPLOYEE (
 
 CREATE SEQUENCE employee_sequence START WITH 1;
 
-CREATE OR REPLACE TRIGGER employee_bir
-BEFORE INSERT ON EMPLOYEE
-FOR EACH ROW
-  BEGIN
-    SELECT employee_sequence.nextval
-    INTO :new.id
-    FROM dual;
-  END;
-
 COMMIT;
