@@ -28,18 +28,19 @@ public class ManageEmployee {
         Integer empID3 = ME.addEmployee("John", "Paul", 10000);
 
         /* List down all the employees */
-        System.out.println("---> Employees auflisten");
+        System.out.println("---> Employees auflisten (1)");
         ME.listEmployees();
 
         /* Update employee's records */
-        ME.updateEmployee(66, 5555);
+        System.out.println("---> Employee " + empID2 + " update Salary");
+        ME.updateEmployee(empID2, 5555);
 
         /* Delete an employee from the database */
-        System.out.println("---> Employee delete");
-        ME.deleteEmployee(67);
+        System.out.println("---> Employee " + empID3 + " delete");
+        ME.deleteEmployee(empID3);
 
         /* List down all the employees */
-        System.out.println("---> Employees auflisten");
+        System.out.println("---> Employees auflisten (2)");
         ME.listEmployees();
 
     }
@@ -68,7 +69,6 @@ public class ManageEmployee {
         System.out.println("employeeID in der Function: " + employeeID);
 
 
-
         return employeeID;
     }
 
@@ -85,7 +85,8 @@ public class ManageEmployee {
                 Employee employee = (Employee) iterator.next();
                 System.out.print("Firstname: " + employee.getFirstName());
                 System.out.print(" Lasttname: " + employee.getLastName());
-                System.out.println(" Salary: " + employee.getSalary());
+                System.out.print(" Salary: " + employee.getSalary());
+                System.out.println(" ID: " + employee.getId());
             }
             tx.commit();
         } catch (HibernateException e) {
