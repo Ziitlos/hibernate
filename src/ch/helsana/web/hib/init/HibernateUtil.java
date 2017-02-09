@@ -1,9 +1,9 @@
 package ch.helsana.web.hib.init;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
  * Created by hkfq4 on 07.02.2017.
@@ -16,7 +16,7 @@ public class HibernateUtil {
     static {
         Configuration conf = new Configuration();
         conf.configure();
-        serviceRegistry = new ServiceRegistryBuilder().applySettings(conf.getProperties()).buildServiceRegistry();
+        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
         try {
             sessionFactory = conf.buildSessionFactory(serviceRegistry);
         } catch (Exception e) {
